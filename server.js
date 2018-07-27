@@ -36,6 +36,7 @@ app.post('/send-email', function (req, res) {
 	client.sendMail(email, function(err, info){
 		if (err ){
 		  console.log(error);
+		  next();
 		}
 		else {
 		  console.log('Message sent: ');

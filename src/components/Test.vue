@@ -7,7 +7,7 @@
         <button v-on:click="reverseMessage">Turn the message over</button>
       </li>
     </ul>
-    <h2>Ecosystem</h2>
+    <h2>Send email</h2>
     <ul>
       <li>
       <form id="mysend-email" action="/send-email" method="post">
@@ -50,13 +50,14 @@
 var $ = require("jquery");
 $('#mysend-email').on('submit', (e) => {
   e.preventDefault();
+  return false;
 })
 
 export default {
   name: 'Test',
   data () {
     return {
-      msg: 'Hi, Vue.js!'
+      msg: 'Hi Jason, this is Vue.js!'
     }
   },
   methods: {
@@ -84,7 +85,13 @@ a {
   color: #42b983;
 }
 textarea {
-    width: 260px;
-    height: 150px;
+  width: 260px;
+  height: 150px;
+}
+.form-group {
+  margin-bottom:10px;
+}
+.btn-success {
+  width: 120px;
 }
 </style>
