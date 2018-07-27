@@ -83,4 +83,8 @@ li {
 a {
   color: #42b983;
 }
+textarea {
+    width: 260px;
+    height: 150px;
+}
 </style>
