@@ -13,69 +13,38 @@ console.log('server started '+ port);
 //---------------------------------------------------
 
 app.post('/send-email', function (req, res) {
-	/*
 	
-  let transporter = nodeMailer.createTransport({
-	  host: 'smtp.gmail.com',
-	  port: 587,//465..25
-	  secure: false,
+	var nodemailer = require('nodemailer');
+	var sgTransport = require('nodemailer-sendgrid-transport');
+
+	var options = {
 	  auth: {
-		  user: 'mikeleilyash@gmail.com',
-		  pass: 'face112358'
-	  },
-	  tls:{
-		rejectUnauthorized: false
-		}
-  });
-  let mailOptions = {
-	  from: '"Krunal Lathiya" <mikeleilyash@gmail.com>', // sender address
-	  to: req.body.to, // list of receivers
-	  subject: req.body.subject, // Subject line
-	  text: req.body.body, // plain text body
-	  html: '<b>NodeJS Email Tutorial</b>' // html body
-  };
-  transporter.sendMail(mailOptions, (error, info) => {
-	  if (error) {
-		  return console.log(error);
+		api_user: 'Mikele11',//SENDGRID_USERNAME
+		api_key: 'face112358'//SENDGRID_PASSWORD
 	  }
-	  console.log('Message %s sent: %s', info.messageId, info.response);
-		  res.render('index');
-	  });
-	  */
-		var nodemailer = require('nodemailer');
-		var sgTransport = require('nodemailer-sendgrid-transport');
+	}
 
-		var options = {
-		  auth: {
-			api_user: 'Mikele11',//SENDGRID_USERNAME
-			api_key: 'face112358'//SENDGRID_PASSWORD
-		  }
+	var client = nodemailer.createTransport(sgTransport(options));
+	
+	var email = {
+	  from: 'mikeleilyash@gmail.com',
+	  to: req.body.to,
+	  subject: req.body.subject,
+	  text: req.body.body,
+	};
+
+	client.sendMail(email, function(err, info){
+		if (err ){
+		  console.log(error);
 		}
+		else {
+		  console.log('Message sent: ');
 
-		var client = nodemailer.createTransport(sgTransport(options));
-		
-		console.log('>>>>',req.body);
-		
-		var email = {
-		  from: 'mikeleilyash@gmail.com',
-		  to: req.body.to,
-		  subject: req.body.subject,
-		  text: req.body.body,
-		  html: '<b>NodeJS Email Tutorial</b>'
-		};
-
-		client.sendMail(email, function(err, info){
-			if (err ){
-			  console.log(error);
-			}
-			else {
-			  console.log('Message sent: ' + info.response);
-			}
-		});		  
+		}
+		return res.end();
+	});		  
 	  
-  });
-
-
+});
 
 
 //---------------------------------------------------

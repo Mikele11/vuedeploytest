@@ -11,13 +11,14 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "express": "^4.15.4",
-    "vue": "^2.5.2",
-    "vue-quick-menu": "^1.0.7",
     "body-parser": "^1.17.2",
     "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "jquery": "^3.3.1",
     "nodemailer": "^4.0.1",
     "nodemailer-sendgrid-transport": "^0.2.0",
+    "vue": "^2.5.2",
+    "vue-quick-menu": "^1.0.7",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

@@ -4,13 +4,13 @@
     <ul>
       <br>
       <li>
-        <button v-on:click="reverseMessage">Перевернуть сообщение</button>
+        <button v-on:click="reverseMessage">Turn the message over</button>
       </li>
     </ul>
     <h2>Ecosystem</h2>
     <ul>
       <li>
-      <form action="/send-email" method="post">
+      <form id="mysend-email" action="/send-email" method="post">
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
@@ -45,13 +45,18 @@
     </ul>
   </div>
 </template>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
+var $ = require("jquery");
+$('#mysend-email').on('submit', (e) => {
+  e.preventDefault();
+})
+
 export default {
   name: 'Test',
   data () {
     return {
-      msg: 'Привет, Vue.js!'
+      msg: 'Hi, Vue.js!'
     }
   },
   methods: {
